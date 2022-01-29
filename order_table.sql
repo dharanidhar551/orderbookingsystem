@@ -6,4 +6,4 @@ CREATE TABLE order_booking.`order_table` (
   `Price` double DEFAULT NULL,
   `Order_date` datetime DEFAULT NULL
   
-)
+);
