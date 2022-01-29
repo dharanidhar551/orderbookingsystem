@@ -1,0 +1,38 @@
+<!Doctype html>
+<html>
+    <head>
+        <title>Login</title>
+        <style>
+            *{
+                padding: 0%;
+                margin-top: 0%;
+            }
+            body{
+                background-color: silver;
+            }
+            .log{
+                margin:0 0 40% 40%;
+            }
+            .he{
+                margin-left: 40%;
+            }
+            .log{
+                position: absolute;
+                background-color: silver;
+                size:20px;
+                box-shadow: 10px 10px;
+            }
+        </style>
+    </head>
+<body>
+<h1 class="he">Login Page</h1>
+<form class="log" action="" method="POST">
+{% csrf_token %}
+{% if error %}
+{{ error }}
+{% endif %}
+{{ form.as_p }}
+<a href="{% url 'user'%}"><input class='log'type="submit" name="submit" value="Log in"/></a>
+</form>
+</html>
+</body>

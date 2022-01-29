@@ -1,0 +1,171 @@
+<! DOCTYPE html>
+    <html>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title> Order Book System </title>
+    </head>
+    <style>
+        body {
+            width: 500px;
+            margin: 0 auto;
+            padding: 50px;
+            background-image: linear-gradient(to right, rgba(255, 0, 0, 0), rgba(255, 0, 0, 1));
+        }
+
+        div.elem-group {
+            margin: 10px 0;
+        }
+
+        div.elem-group.inlined {
+            width: 49%;
+            display: inline-block;
+            float: left;
+            margin-left: 1%;
+        }
+
+        label {
+            display: block;
+            font-family: 'Nanum Gothic';
+            padding-bottom: 8px;
+            font-size: 1em;
+        }
+
+        input {
+            border-radius: 2px;
+            border: 2px solid #777;
+            box-sizing: border-box;
+            font-size: 1em;
+            font-family: 'Nanum Gothic';
+            width: 100%;
+            padding: 10px;
+        }
+
+        select {
+            border-radius: 2px;
+            border: 2px solid #777;
+            box-sizing: border-box;
+            font-size: 1.25em;
+            font-family: 'Nanum Gothic';
+            width: 100%;
+            padding: 8px;
+        }
+
+        textarea {
+            border-radius: 2px;
+            border: 2px solid #777;
+            box-sizing: border-box;
+            font-size: 1em;
+            font-family: 'Nanum Gothic';
+            width: 100%;
+            padding: 8px;
+        }
+
+        div.elem-group.inlined input {
+            width: 95%;
+            display: inline-block;
+        }
+
+        h1 {
+            position: relative;
+            padding: 0;
+            margin: 0;
+            font-family: "Raleway", sans-serif;
+            font-weight: 300;
+            font-size: 40px;
+            color: #080808;
+            -webkit-transition: all 0.4s ease 0s;
+            -o-transition: all 0.4s ease 0s;
+            transition: all 0.4s ease 0s;
+            text-align: center;
+        }
+
+        textarea {
+            height: 250px;
+        }
+
+        h2 {
+            font-style: italic;
+            font-family: "Playfair Display", "Bookman", serif;
+            color: #999;
+            letter-spacing: -0.005em;
+            word-spacing: 1px;
+            font-size: 1.75em;
+            font-weight: bold;
+        }
+
+        hr {
+            border: 1px dotted #ccc;
+        }
+
+        button {
+            height: 50px;
+            background: orange;
+            border: none;
+            color: white;
+            font-size: 1.25em;
+            font-family: 'Nanum Gothic';
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            border: 2px solid black;
+        }
+    </style>
+
+    <body>
+        <h2> Order Book System </h2>
+        <form action="#" method="GET">
+            <div class="elem-group">
+                <label for="name"> Search Stock </label>
+                <select type="room-selection" name="room_preference" required>
+                    <option value=""> Stock </option>
+                    <option value="text"> BDS </option>
+
+                    <option value="text"> DBS </option>
+                </select>
+            </div>
+            <div class="elem-group">
+                <label for="email"> Order Type </label>
+                <select class="room-selection" name="room_preference" required>
+                    <option value=""> Option </option>
+                    <option value="text"> Limit </option>
+
+                    <option value="text"> Market </option>
+                </select>
+            </div>
+            <div class="elem-group">
+                <label for="phone"> Price </label>
+                <input type="number" id="phone" name="visitor_phone" placeholder="Enter the price"
+                    pattern=(\d{3})-?\s?(\d{3})-?\s?(\d{4}) required>
+                <div class="elem-group">
+                    <label for="room-selection"> Quantity </label>
+                    <input type="number" id="qnty" name="qnty" placeholder="Enter the quantity" required>
+                </div>
+                <hr>
+                <button id="place" onClick="showMessage()" type="submit"> Place Order </button>
+        </form>
+        <script>
+            var currentDateTime = new Date();
+            var year = currentDateTime.getFullYear();
+            var month = (currentDateTime.getMonth() + 1);
+            var date = (currentDateTime.getDate() + 1);
+            if (date < 10) {
+                date = '0' + date;
+            }
+            if (month < 10) {
+                month = '0' + month;
+            }
+            var dateTomorrow = year + "-" + month + "-" + date;
+            var checkinElem = document.querySelector("#checkin-date");
+            var checkoutElem = document.querySelector("#checkout-date");
+            checkinElem.setAttribute("min", dateTomorrow);
+            checkinElem.onchange = function () {
+                checkoutElem.setAttribute("min", this.value);
+            } 
+            function showMessage() {
+                alert("ORDER PLACED SUCCESFULLY");
+            }
+        </script>
+    </body>
+ </html>
